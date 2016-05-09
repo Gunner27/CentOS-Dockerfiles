@@ -5,6 +5,8 @@ CentOS 7 Dockerfile for nginx, This Dockerfile uses https://www.softwarecollecti
 
 error_log and access_log will go to STDOUT.
 
+Please review the configuration in `root/etc/nginx.conf`.
+
 
 To build:
 
@@ -14,7 +16,7 @@ Copy the sources down -
 
 To run:
 
-    # docker run -d -p 80:80 <username>/nginx:centos7
+    # docker run -d -p 80:8080 <username>/nginx:centos7
 
 To test:
 
