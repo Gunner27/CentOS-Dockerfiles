@@ -17,8 +17,8 @@ LABEL Component="nginx" \
       Release="3"
 
 # Labels could be consumed by OpenShift
-LABEL io.k8s.description="nginx [engine x] is an HTTP and reverse proxy server, a mail proxy server, and a generic TCP/UDP proxy server, originally written by Igor Sysoev." \
-      io.k8s.display-name="nginx 1.8.0" \
+LABEL io.k8s.description="NGINX is a free, open-source, high-performance HTTP server and reverse proxy, as well as an IMAP/POP3 proxy server. NGINX is known for its high performance, stability, rich feature set, simple configuration, and low resource consumption." \
+      io.k8s.display-name="NGINX 1.8.0" \
       io.openshift.expose-services="80:http" \
       io.openshift.tags="nginx"
 
@@ -43,11 +43,13 @@ ADD root /
 
 # ADD https://git.centos.org/sources/httpd/c7/acf5cccf4afaecf3afeb18c50ae59fd5c6504910 /usr/share/nginx/html/
 # RUN sed -i -e 's/Apache/nginx/g' -e '/apache_pb.gif/d' /usr/share/nginx/html/index.html
-RUN echo "nginx on CentOS7" > /usr/share/nginx/html/index.html
+RUN echo "nginx on CentOS7" > /usr/share/nginx/html/index.html && \
+    mkdir -p /var/opt/rh/rh-nginx18/lib/nginx/tmp/ && \
+    chmod 777 /var/opt/rh/rh-nginx18/lib/nginx/tmp/
+# FIXME this last two commands is to get around some OpenShift problems:
+# 2016/05/09 18:45:02 [emerg] 1#0: mkdir() "/var/opt/rh/rh-nginx18/lib/nginx/tmp/proxy" failed (13: Permission denied)
 
 EXPOSE 80
-
-VOLUME [ "/var/opt/rh/rh-nginx18/lib/nginx/tmp/" ]
 
 ENTRYPOINT ["container-entrypoint"]
 CMD [ "nginx18" ]
