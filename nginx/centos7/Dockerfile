@@ -47,6 +47,8 @@ RUN echo "nginx on CentOS7" > /usr/share/nginx/html/index.html
 
 EXPOSE 80
 
+VOLUME [ "/var/opt/rh/rh-nginx18/lib/nginx/tmp/" ]
+
 USER 997
 
 ENTRYPOINT ["container-entrypoint"]
