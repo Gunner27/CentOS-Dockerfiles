@@ -49,7 +49,5 @@ EXPOSE 80
 
 VOLUME [ "/var/opt/rh/rh-nginx18/lib/nginx/tmp/" ]
 
-USER 997
-
 ENTRYPOINT ["container-entrypoint"]
 CMD [ "nginx18" ]
