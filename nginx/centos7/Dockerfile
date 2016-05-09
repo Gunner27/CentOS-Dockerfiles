@@ -14,7 +14,7 @@ MAINTAINER The CentOS Project <cloud-ops@centos.org>
 LABEL Component="nginx" \
       Name="centos/nginx-180-centos7" \
       Version="1.8.0" \
-      Release="1"
+      Release="3"
 
 # Labels could be consumed by OpenShift
 LABEL io.k8s.description="nginx [engine x] is an HTTP and reverse proxy server, a mail proxy server, and a generic TCP/UDP proxy server, originally written by Igor Sysoev." \
